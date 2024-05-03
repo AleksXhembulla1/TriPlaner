@@ -1,0 +1,1881 @@
+TRIPLANER CODE. IT CONTAINS CSS, HTML, AND JAVASCRIPT 
+
+HTML:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <div class="header">
+        <img src="images/logo.png" alt="TriPlaner Logo" class="logo">
+        <nav class="tab-nav">
+            <button class="tab-button" onclick="openTab('Home')">Home</button>
+            <button class="tab-button" onclick="openTab('Explore')">Explore</button>
+            <button class="tab-button" onclick="openTab('Itinerary')">Itinerary</button>
+            <button class="tab-button" onclick="openTab('Recommendations')">Recommendations</button>
+
+        </nav>
+    </div>
+   
+    <title>TriPlaner</title>
+    <link rel="stylesheet" href="app.css">
+
+    
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    
+    
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rakkas&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/openlayers/dist/ol.css" type="text/css">
+    <script src="https://cdn.jsdelivr.net/npm/openlayers"></script>
+
+</head>
+<body>
+    <div id="welcomeScreen" class="full-screen-img">
+        <button id="getStartedButton" class="button-common get-started-btn">Let's Get Started</button>
+    </div>
+<div id="Home" class="tabcontent">
+        <div class="parallax" id="section1">
+            <div class="parallax-content">Welcome to TriPlaner</div>
+        </div>
+        <div class="parallax" id="section2">
+            <div class="parallax-content">Explore Breathtaking Destinations</div>
+        </div>
+        <div class="parallax" id="section3">
+            <div class="parallax-content">Craft Your Perfect Journey</div>
+        </div>
+        <div class="parallax" id="section4">
+            <div class="parallax-content">Hear From Our Community</div>
+        </div>
+    </div>
+    
+    <div id="Explore" class="tabcontent">
+        <h2>Explore Branson</h2>
+        
+        <div class="grid-container">
+            <!-- Card 1: Silver Dollar City -->
+            <div class="card" onclick="toggleCard(this, 'map1', [-93.339120, 36.669366]);">
+                <div class="card-inner" onclick="this.classList.toggle('is-flipped');">
+                    <div class="card-front">
+                        <img src="images/attraction1.jpg" alt="Silver Dollar City" class="card-image">
+                    </div>
+                    <div class="card-back">
+                        <h3>Silver Dollar City</h3>
+                        <p>Silver Dollar City is a theme park in Branson, Missouri, offering a nostalgic journey to the 1880s Ozarks with rides, entertainment, crafts, and delicious food, all set amidst scenic beauty.
+                        </p>
+                        <div id="map1" class="map-container"></div>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Card 2: Ferris Wheel -->
+            <div class="card" onclick="toggleCard(this, 'map2', [-93.28350, 36.63843]);">
+                <div class="card-inner" onclick="this.classList.toggle('is-flipped');">
+                    <div class="card-front">
+                        <img src="images/attraction2.jpg" alt="Ferris Wheel" class="card-image">
+                    </div>
+                    <div class="card-back">
+                        <h3>Ferris Wheel</h3>
+                        <p>The Ferris wheel in Branson offers breathtaking views of the city and the surrounding Ozark Mountains. Standing tall among the attractions, it provides a memorable experience with its rotating cabins, offering visitors a unique perspective of Branson's beauty from above.</p>
+                        <div id="map2" class="map-container"></div>
+                    </div>
+                </div>
+            </div>
+        
+            <!-- Card 3: The Keeter Center -->
+<div class="card" onclick="toggleCard(this, 'map3', [-93.23568, 36.61443]);">
+    <div class="card-inner">
+        <div class="card-front">
+            <img src="images/attraction4.jpg" alt="The Keeter Center" class="card-image">
+        </div>
+        <div class="card-back">
+            <h3>The Keeter Center</h3>
+            <p>The Keeter Center at College of the Ozarks is a hotel, restaurant, and conference facility known for its beautiful lodging, farm-to-table dining, and warm hospitality. Nestled in the Ozark Mountains, it offers guests a chance to experience the serene beauty and craftsmanship of the area.</p>
+            <div id="map3" class="map-container"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Card 4: Titanic Museum -->
+<div class="card" onclick="toggleCard(this, 'map4', [-93.28015, 36.63840]);">
+    <div class="card-inner">
+        <div class="card-front">
+            <img src="images/attraction3.webp" alt="Titanic Museum" class="card-image">
+        </div>
+        <div class="card-back">
+            <h3>Titanic Museum</h3>
+            <p>The Titanic Museum in Branson is a unique experience that brings the history of the RMS Titanic to life. Visitors can explore full-scale replicas of the ship's rooms, view genuine artifacts, and learn about the passengers and crew's stories.</p>
+            <div id="map4" class="map-container"></div>
+        </div>
+    </div>
+</div>
+
+    <!-- Additional Cards based on your format -->
+
+    <!-- Card 5: Table Rock Lake -->
+<div class="card" onclick="toggleCard(this, 'map5', [-93.31510, 36.60684]);">
+    <div class="card-inner">
+        <div class="card-front">
+              <img src="images/attraction5.png" alt="Table Rock Lake" class="card-image">
+            </div>
+            <div class="card-back">
+                <h3>Table Rock Lake</h3>
+                <p>Table Rock Lake is a stunning reservoir known for its clear blue waters, sprawling shoreline, and outdoor activities like fishing, boating, and swimming. A perfect spot for nature lovers and adventure seekers.</p>
+                <div id="map5" class="map-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 6: Branson Landing -->
+    <div class="card" onclick="toggleCard(this, 'map6', [-93.21392, 36.64422]);">
+        <div class="card-inner">
+            <div class="card-front">
+                <img src="images/attraction6.jpg" alt="Branson Landing" class="card-image">
+            </div>
+            <div class="card-back">
+                <h3>Branson Landing</h3>
+                <p>Branson Landing offers an exciting mix of shopping, dining, and entertainment right on the waterfront. Enjoy the spectacular fountain shows, live music, and the scenic boardwalk along Lake Taneycomo.</p>
+                <div id="map6" class="map-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 7: Sight & Sound Theatres -->
+    <div class="card" onclick="toggleCard(this, 'map7', [-93.26218, 36.66554]);">
+        <div class="card-inner">
+            <div class="card-front">
+                <img src="images/attraction7.png" alt="Sight & Sound Theatres" class="card-image">
+            </div>
+            <div class="card-back">
+                <h3>Sight & Sound Theatres</h3>
+                <p>Sight & Sound Theatres is renowned for its grand biblical productions. With its state-of-the-art technology and talented cast, each show is an unforgettable experience, bringing epic stories to life on stage.</p>
+                <div id="map7" class="map-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 8: Showboat Branson Belle -->
+    <div class="card" onclick="toggleCard(this, 'map8', [-93.31677, 36.58701]);">
+        <div class="card-inner">
+            <div class="card-front">
+                <img src="images/attraction8.jpg" alt="Showboat Branson Belle" class="card-image">
+            </div>
+            <div class="card-back">
+                <h3>Showboat Branson Belle</h3>
+                <p>Embark on a journey aboard the Showboat Branson Belle, an authentic paddle-wheeler that offers a unique blend of dining, entertainment, and stunning views of Table Rock Lake.</p>
+                <div id="map8" class="map-container"></div>
+            </div>
+        </div>
+    </div>
+
+<!-- Card 9: Branson Scenic Railway -->
+<div class="card" onclick="toggleCard(this, 'map9', [-93.21496, 36.64384]);">
+    <div class="card-inner">
+        <div class="card-front">
+            <img src="images/attraction9.jpg" alt="Branson Scenic Railway" class="card-image">
+        </div>
+        <div class="card-back">
+            <h3>Branson Scenic Railway</h3>
+            <p>Embark on a nostalgic journey through the Ozark foothills on the Branson Scenic Railway. Enjoy panoramic views and learn about the region's history aboard this vintage train.</p>
+            <div id="map9" class="map-container"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Card 10: Dolly Parton's Stampede -->
+<div class="card" onclick="toggleCard(this, 'map10', [-93.2502, 36.6438]);">
+    <div class="card-inner">
+        <div class="card-front">
+            <img src="images/attraction10.jpg" alt="Dolly Parton's Stampede" class="card-image">
+        </div>
+        <div class="card-back">
+            <h3>Dolly Parton's Stampede</h3>
+            <p>Dolly Parton's Stampede offers an extraordinary dinner show with a friendly North vs. South competition, horse riding stunts, special effects, and a four-course family feast.</p>
+            <div id="map10" class="map-container"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Card 11: Shepherd of the Hills Fish Hatchery -->
+<div class="card" onclick="toggleCard(this, 'map11', [-93.30460, 36.59724]);">
+    <div class="card-inner">
+        <div class="card-front">
+            <img src="images/attraction11.jpg" alt="Shepherd of the Hills Fish Hatchery" class="card-image">
+        </div>
+        <div class="card-back">
+            <h3>Shepherd of the Hills Fish Hatchery</h3>
+            <p>Explore Missouri's largest trout-rearing facility, learn about conservation, and enjoy the scenic nature trails at the Shepherd of the Hills Fish Hatchery.</p>
+            <div id="map11" class="map-container"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Card 12: Hollywood Wax Museum -->
+<div class="card" onclick="toggleCard(this, 'map12', [-93.27697, 36.63769]);">
+    <div class="card-inner">
+        <div class="card-front">
+            <img src="images/attraction 12.jpg" alt="Hollywood Wax Museum" class="card-image">
+        </div>
+        <div class="card-back">
+            <h3>Hollywood Wax Museum</h3>
+            <p>Get up close and personal with your favorite celebrities at the Hollywood Wax Museum. It's the perfect place to snap selfies and interact with icons from movies, TV, and music.</p>
+            <div id="map12" class="map-container"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Card 13: Marvel Cave -->
+<div class="card" onclick="toggleCard(this, 'map13', [-93.33964, 36.66765]);">
+    <div class="card-inner">
+        <div class="card-front">
+            <img src="images/attraction 13.jpg" alt="Marvel Cave" class="card-image">
+        </div>
+        <div class="card-back">
+            <h3>Marvel Cave</h3>
+            <p>Descend into Marvel Cave, one of the deepest caves in Missouri. Explore its vast chambers and learn about its rich history, including its role as a landmark before Silver Dollar City was built above it.</p>
+            <div id="map13" class="map-container"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Card 14: Fritz's Adventure -->
+<div class="card" onclick="toggleCard(this, 'map14', [-93.24584, 36.64170]);">
+    <div class="card-inner">
+        <div class="card-front">
+            <img src="images/attraction14.jpg" alt="Fritz's Adventure" class="card-image">
+        </div>
+        <div class="card-back">
+            <h3>Fritz's Adventure</h3>
+            <p>Fritz's Adventure offers families a thrilling experience with obstacle courses, climbing walls, zip-lines, and more. It's an indoor adventure park that provides fun for all ages.</p>
+            <div id="map14" class="map-container"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Additional cards... -->
+
+<div class="card" onclick="toggleCard(this, 'card15', [-93.24584, 36.64170]);">
+
+
+
+
+
+</div>
+
+
+
+
+        </div>
+        
+    
+    </div>
+       
+
+    <div id="Itinerary" class="tabcontent">
+        <h2>Build Your Personalized Itinerary</h2>
+         <div class="itinerary-days-nav">
+            <button class="day-btn" onclick="openDay('Monday')">Monday</button>
+            <button class="day-btn" onclick="openDay('Tuesday')">Tuesday</button>
+            <button class="day-btn" onclick="openDay('Wednesday')">Wednesday</button>
+            <button class="day-btn" onclick="openDay('Thursday')">Thursday</button>
+            <button class="day-btn" onclick="openDay('Friday')">Friday</button>
+            <button class="day-btn" onclick="openDay('Saturday')">Saturday</button>
+            <button class="day-btn" onclick="openDay('Sunday')">Sunday</button>
+        </div> 
+        
+    
+        <div id="Monday" class="itinerary-day activities-container" style="display: none;">
+            
+            <!-- 8 AM Options -->
+<div class="activity" draggable="true" ondragstart="drag(event)" id="mon_breakfastDiner">Diner Breakfast at Joe's Diner at 8 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="mon_morningHike">Morning Hike at Ozark Mountain Trails at 8 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="mon_sunriseKayak">Sunrise Kayaking at Table Rock Lake at 8 AM</div>
+
+<!-- 9 AM Options -->
+<div class="activity" draggable="true" ondragstart="drag(event)" id="mon_golfLegends">Legends Golf Course Tee Time at 9 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="mon_butterflyPalace">Butterfly Palace Tour at 9 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="mon_ziplineAdventure">Zipline Adventure at Branson Zipline at 9 AM</div>
+
+<!-- 10 AM Options -->
+<div class="activity" draggable="true" ondragstart="drag(event)" id="mon_aquariumVisit">Aquarium Visit at Branson's Promised Land Zoo at 10 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="mon_museumHistory">History Museum Tour at Branson Centennial Museum at 10 AM</div>
+
+<!-- 11 AM Options -->
+<div class="activity" draggable="true" ondragstart="drag(event)" id="mon_bransonLanding">Branson Landing Shopping at 11 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="mon_showboatBrunch">Showboat Branson Belle Brunch Cruise at 11 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="mon_horsebackRiding">Horseback Riding at Bear Creek Stables at 11 AM</div>
+
+<!-- 12 PM Options -->
+<div class="activity" draggable="true" ondragstart="drag(event)" id="mon_lunchCafe">Cafe Lunch at Farmhouse Restaurant at 12 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="mon_silverDollarCity">Silver Dollar City at 12 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="mon_titanicMuseum">Titanic Museum Visit at Titanic Museum Attraction at 12 PM</div>
+
+
+<div class="activity" draggable="true" ondragstart="drag(event)" id="mon_riverCruise">Lake Taneycomo River Cruise at Main Street Lake Cruises at 1 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="mon_craftWorkshop">Craft Workshop at Branson Craft Mall at 1 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="mon_tableRockHike">Table Rock State Park Hike at Table Rock State Park at 1 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="mon_spaRetreat">Spa Retreat at Cedar Creek Spa at 2 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="mon_waterskiingFun">Waterskiing on Table Rock Lake at State Park Marina at 2 PM</div>
+
+            <div class="itinerary-slot" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <h3>Your Monday Itinerary</h3>
+            </div>
+        </div>
+
+    
+        <div id="Tuesday" class="itinerary-day activities-container" style="display: none;">
+            
+            <!-- 8 AM Options -->
+<div class="activity" draggable="true" ondragstart="drag(event)" id="tue_breakfastCafe">Cafe Breakfast at Clocker's Cafe at 8 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="tue_morningFishing">Morning Fishing at Lake Taneycomo at 8 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="tue_hotAirBalloon">Hot Air Balloon Ride at Branson Balloon at 8 AM</div>
+
+<!-- 9 AM Options -->
+<div class="activity" draggable="true" ondragstart="drag(event)" id="tue_golfLegends">Legends Golf Course Tee Time at 9 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="tue_wineryTour">Winery Tour at Stone Hill Winery at 9 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="tue_adventurePark">Adventure Park at Fritz's Adventure at 9 AM</div>
+
+<!-- 10 AM Options -->
+<div class="activity" draggable="true" ondragstart="drag(event)" id="tue_butterflyPalace">Butterfly Palace Tour at 10 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="tue_museumVisit">Titanic Museum Visit at Titanic Museum Attraction at 10 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="tue_shopping">Shopping at Tanger Outlets at 10 AM</div>
+
+<!-- 11 AM Options -->
+<div class="activity" draggable="true" ondragstart="drag(event)" id="tue_ziplineAdventure">Zipline Adventure at Branson Zipline at 11 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="tue_showboatLunch">Showboat Branson Belle Lunch Cruise at 11 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="tue_hiking">Hiking at Dogwood Canyon Nature Park at 11 AM</div>
+
+<!-- 12 PM Options -->
+<div class="activity" draggable="true" ondragstart="drag(event)" id="tue_lunchBuffet">Buffet Lunch at Grand Country Buffet at 12 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="tue_silverDollarCity">Silver Dollar City at 12 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="tue_rafting">White Water Rafting at Branson White Water at 12 PM</div>
+
+
+<div class="activity" draggable="true" ondragstart="drag(event)" id="tue_escapeRoom">Escape Room Adventure at Escape Code at 1 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="tue_craftWorkshop">Craft Workshop at Branson Craft Mall at 1 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="tue_nationalParkTour">National Park Tour at Buffalo National River at 1 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="tue_helicopterTour">Helicopter Tour at Chopper Charter Branson at 2 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="tue_waterskiingFun">Waterskiing on Table Rock Lake at State Park Marina at 2 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="tue_dinnerDine">Fine Dining Dinner at Level 2 Steakhouse at 7 PM</div>
+
+<div class="itinerary-slot" ondrop="drop(event)" ondragover="allowDrop(event)">
+<h3>Your Tuesday Itinerary</h3>
+</div>
+</div>
+
+    
+<div id="Wednesday" class="itinerary-day activities-container" style="display: none;">
+            
+    <!-- 8 AM Options -->
+<div class="activity" draggable="true" ondragstart="drag(event)" id="wed_breakfastCafe">Cafe Breakfast at BillyGail's Cafe at 8 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="wed_morningFishing">Morning Fishing at Lake Taneycomo at 8 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="wed_hotAirBalloon">Hot Air Balloon Ride at Branson Balloon at 8 AM</div>
+
+<!-- 9 AM Options -->
+<div class="activity" draggable="true" ondragstart="drag(event)" id="wed_golfLegends">Legends Golf Course Tee Time at 9 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="wed_wineryTour">Winery Tour at Mount Pleasant Winery at 9 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="wed_adventurePark">Adventure Park at The Track Family Fun Parks at 9 AM</div>
+
+<!-- 10 AM Options -->
+<div class="activity" draggable="true" ondragstart="drag(event)" id="wed_butterflyPalace">Butterfly Palace Tour at 10 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="wed_museumVisit">Titanic Museum Visit at Titanic Museum Attraction at 10 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="wed_shopping">Shopping at Branson Landing at 10 AM</div>
+
+<!-- 11 AM Options -->
+<div class="activity" draggable="true" ondragstart="drag(event)" id="wed_ziplineAdventure">Zipline Adventure at Branson Zipline at 11 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="wed_showboatLunch">Showboat Branson Belle Lunch Cruise at 11 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="wed_hiking">Hiking at Dogwood Canyon Nature Park at 11 AM</div>
+
+<!-- 12 PM Options -->
+<div class="activity" draggable="true" ondragstart="drag(event)" id="wed_lunchBuffet">Buffet Lunch at Grand Country Buffet at 12 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="wed_silverDollarCity">Silver Dollar City at 12 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="wed_rafting">White Water Rafting at Branson White Water at 12 PM</div>
+
+
+<div class="activity" draggable="true" ondragstart="drag(event)" id="wed_escapeRoom">Escape Room Adventure at Escape Code at 1 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="wed_craftWorkshop">Craft Workshop at Branson Craft Mall at 1 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="wed_nationalParkTour">National Park Tour at Buffalo National River at 1 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="wed_helicopterTour">Helicopter Tour at Chopper Charter Branson at 2 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="wed_waterskiingFun">Waterskiing on Table Rock Lake at State Park Marina at 2 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="wed_dinnerDine">Fine Dining Dinner at Level 2 Steakhouse at 7 PM</div>
+
+<div class="itinerary-slot" ondrop="drop(event)" ondragover="allowDrop(event)">
+<h3>Your Wednesday Itinerary</h3>
+</div>
+</div>
+
+    
+<div id="Thursday" class="itinerary-day activities-container" style="display: none;">
+            
+    <!-- 8 AM Options -->
+<div class="activity" draggable="true" ondragstart="drag(event)" id="thu_breakfastCafe">Cafe Breakfast at BillyGail's Cafe at 8 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="thu_morningFishing">Morning Fishing at Lake Taneycomo at 8 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="thu_hotAirBalloon">Hot Air Balloon Ride at Branson Balloon at 8 AM</div>
+
+<!-- 9 AM Options -->
+<div class="activity" draggable="true" ondragstart="drag(event)" id="thu_golfLegends">Legends Golf Course Tee Time at 9 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="thu_wineryTour">Winery Tour at Stone Hill Winery at 9 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="thu_adventurePark">Adventure Park at Fritz's Adventure at 9 AM</div>
+
+<!-- 10 AM Options -->
+<div class="activity" draggable="true" ondragstart="drag(event)" id="thu_helicopterTour">Helicopter Tour at Chopper Charter Branson at 10 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="thu_museumVisit">Veterans Memorial Museum Visit at 10 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="thu_shopping">Shopping at Branson Mill Craft Village at 10 AM</div>
+
+<!-- 11 AM Options -->
+<div class="activity" draggable="true" ondragstart="drag(event)" id="thu_ziplineAdventure">Zipline Adventure at Adventure Ziplines of Branson at 11 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="thu_scenicRailway">Scenic Railway Tour with Branson Scenic Railway at 11 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="thu_troutFarm">Trout Farm Visit at Shepherd of the Hills Fish Hatchery at 11 AM</div>
+
+<!-- 12 PM Options -->
+<div class="activity" draggable="true" ondragstart="drag(event)" id="thu_lunchBuffet">Buffet Lunch at Grand Country Buffet at 12 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="thu_silverDollarCity">Silver Dollar City at 12 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="thu_rafting">White Water Rafting at Branson White Water at 12 PM</div>
+
+
+<div class="activity" draggable="true" ondragstart="drag(event)" id="thu_escapeRoom">Escape Room Adventure at Cryptex Escape Rooms at 1 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="thu_craftWorkshop">Craft Workshop at Branson Craft Mall at 1 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="thu_nationalParkTour">National Park Tour at Buffalo National River at 1 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="thu_aquariumVisit">Aquarium Visit at Branson's Promised Land Zoo at 2 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="thu_waterskiingFun">Waterskiing on Table Rock Lake at State Park Marina at 2 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="thu_dinnerDine">Dinner at White River Fish House at 7 PM</div>
+
+<div class="itinerary-slot" ondrop="drop(event)" ondragover="allowDrop(event)">
+<h3>Your Thursday Itinerary</h3>
+</div>
+</div>
+
+    
+<div id="Friday" class="itinerary-day activities-container" style="display: none;">
+            
+    <!-- 8 AM Options -->
+<div class="activity" draggable="true" ondragstart="drag(event)" id="fri_breakfastCafe">Cafe Breakfast at Grandma Ruth's Bakery at 8 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="fri_morningFishing">Morning Fishing at Lake Taneycomo at 8 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="fri_hotAirBalloon">Hot Air Balloon Ride at Branson Balloon at 8 AM</div>
+
+<!-- 9 AM Options -->
+<div class="activity" draggable="true" ondragstart="drag(event)" id="fri_golfLegends">Legends Golf Course Tee Time at 9 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="fri_wineryTour">Winery Tour at Mount Pleasant Winery at 9 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="fri_adventurePark">Adventure Park at Fritz's Adventure at 9 AM</div>
+
+<!-- 10 AM Options -->
+<div class="activity" draggable="true" ondragstart="drag(event)" id="fri_helicopterTour">Helicopter Tour at Chopper Charter Branson at 10 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="fri_museumVisit">Ripley's Believe It or Not! Museum Visit at 10 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="fri_shopping">Shopping at Tanger Outlets at 10 AM</div>
+
+<!-- 11 AM Options -->
+<div class="activity" draggable="true" ondragstart="drag(event)" id="fri_ziplineAdventure">Zipline Adventure at Adventure Ziplines of Branson at 11 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="fri_scenicRailway">Scenic Railway Tour with Branson Scenic Railway at 11 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="fri_troutFarm">Trout Farm Visit at Shepherd of the Hills Fish Hatchery at 11 AM</div>
+
+<!-- 12 PM Options -->
+<div class="activity" draggable="true" ondragstart="drag(event)" id="fri_lunchBuffet">Buffet Lunch at Grand Country Buffet at 12 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="fri_silverDollarCity">Silver Dollar City at 12 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="fri_rafting">White Water Rafting at Branson White Water at 12 PM</div>
+
+<div class="activity" draggable="true" ondragstart="drag(event)" id="fri_escapeRoom">Escape Room Adventure at Cryptex Escape Rooms at 1 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="fri_craftWorkshop">Craft Workshop at Branson Craft Mall at 1 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="fri_nationalParkTour">National Park Tour at Buffalo National River at 1 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="fri_aquariumVisit">Aquarium Visit at Branson's Promised Land Zoo at 2 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="fri_waterskiingFun">Waterskiing on Table Rock Lake at State Park Marina at 2 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="fri_dinnerDine">Dinner at The Keeter Center at 7 PM</div>
+
+<div class="itinerary-slot" ondrop="drop(event)" ondragover="allowDrop(event)">
+<h3>Your Friday Itinerary</h3>
+</div>
+</div>
+
+    
+<div id="Saturday" class="itinerary-day activities-container" style="display: none;">
+            
+    <!-- 8 AM Options -->
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sat_breakfastCafe">Cafe Breakfast at Farmhouse Restaurant at 8 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sat_morningFishing">Morning Fishing at Lake Taneycomo at 8 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sat_hotAirBalloon">Hot Air Balloon Ride at Branson Balloon at 8 AM</div>
+
+<!-- 9 AM Options -->
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sat_golfLegends">Legends Golf Course Tee Time at 9 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sat_wineryTour">Winery Tour at Stone Hill Winery at 9 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sat_adventurePark">Adventure Park at Fritz's Adventure at 9 AM</div>
+
+<!-- 10 AM Options -->
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sat_helicopterTour">Helicopter Tour at Chopper Charter Branson at 10 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sat_museumVisit">Ripley's Believe It or Not! Museum Visit at 10 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sat_shopping">Shopping at Branson Landing at 10 AM</div>
+
+<!-- 11 AM Options -->
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sat_ziplineAdventure">Zipline Adventure at Adventure Ziplines of Branson at 11 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sat_scenicRailway">Scenic Railway Tour with Branson Scenic Railway at 11 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sat_troutFarm">Trout Farm Visit at Shepherd of the Hills Fish Hatchery at 11 AM</div>
+
+<!-- 12 PM Options -->
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sat_lunchBuffet">Buffet Lunch at Grand Country Buffet at 12 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sat_silverDollarCity">Silver Dollar City at 12 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sat_rafting">White Water Rafting at Branson White Water at 12 PM</div>
+
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sat_escapeRoom">Escape Room Adventure at Cryptex Escape Rooms at 1 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sat_craftWorkshop">Craft Workshop at Branson Craft Mall at 1 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sat_nationalParkTour">National Park Tour at Buffalo National River at 1 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sat_aquariumVisit">Aquarium Visit at Branson's Promised Land Zoo at 2 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sat_waterskiingFun">Waterskiing on Table Rock Lake at State Park Marina at 2 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sat_dinnerDine">Dinner at Dobyns Dining Room at 7 PM</div>
+
+<div class="itinerary-slot" ondrop="drop(event)" ondragover="allowDrop(event)">
+<h3>Your Saturday Itinerary</h3>
+</div>
+</div>
+
+    
+<div id="Sunday" class="itinerary-day activities-container" style="display: none;">
+            
+    <!-- 8 AM Options -->
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sun_breakfastCafe">Cafe Breakfast at BillyGail's Cafe at 8 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sun_morningFishing">Morning Fishing at Lake Taneycomo at 8 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sun_hotAirBalloon">Hot Air Balloon Ride at Branson Balloon at 8 AM</div>
+
+<!-- 9 AM Options -->
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sun_golfLegends">Legends Golf Course Tee Time at 9 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sun_wineryTour">Winery Tour at Stone Hill Winery at 9 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sun_church1">Attend Morning Service at First Baptist Church at 9 AM</div>
+
+<!-- 10 AM Options -->
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sun_helicopterTour">Helicopter Tour at Chopper Charter Branson at 10 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sun_museumVisit">Ripley's Believe It or Not! Museum Visit at 10 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sun_church2">Attend Morning Service at St. Joseph Catholic Church at 10 AM</div>
+
+<!-- 11 AM Options -->
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sun_ziplineAdventure">Zipline Adventure at Adventure Ziplines of Branson at 11 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sun_scenicRailway">Scenic Railway Tour with Branson Scenic Railway at 11 AM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sun_church3">Attend Morning Service at Grace Community Church at 11 AM</div>
+
+<!-- 12 PM Options -->
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sun_lunchBuffet">Buffet Lunch at Grand Country Buffet at 12 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sun_silverDollarCity">Silver Dollar City at 12 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sun_rafting">White Water Rafting at Branson White Water at 12 PM</div>
+
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sun_escapeRoom">Escape Room Adventure at Cryptex Escape Rooms at 1 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sun_craftWorkshop">Craft Workshop at Branson Craft Mall at 1 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sun_nationalParkTour">National Park Tour at Buffalo National River at 1 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sun_aquariumVisit">Aquarium Visit at Branson's Promised Land Zoo at 2 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sun_waterskiingFun">Waterskiing on Table Rock Lake at State Park Marina at 2 PM</div>
+<div class="activity" draggable="true" ondragstart="drag(event)" id="sun_dinnerDine">Dinner at The Keeter Center at 7 PM</div>
+
+<div class="itinerary-slot" ondrop="drop(event)" ondragover="allowDrop(event)">
+<h3>Your Sunday Itinerary</h3>
+</div>
+</div>
+
+            
+            
+            <div class="itinerary-download-button">
+                <button id="downloadItinerary">Download Itinerary as PDF</button>
+
+                </div>
+            
+    </div>
+    <div id="Recommendations" class="tabcontent">
+    <div id="recommendations-prompt" class="center-message">
+        <h2>Please Choose an Option</h2>
+    </div>
+    <div class="options-container">
+        <button id="openQuizButton">Take the Quiz</button>
+        <button id="openRecommendationsButton">View Recommendations</button>
+        <button id="openBudgetPlannerButton">Budget Planner</button>
+    </div>
+    <div id="quiz-container" style="display:none;">
+        <div class="question" id="question-1">
+            <h3>Who Do You Like to Travel With?</h3>
+            <button class="answer" data-next="2" data-group="travelWith">Solo</button>
+            <button class="answer" data-next="2" data-group="travelWith">Family</button>
+            <button class="answer" data-next="2" data-group="travelWith">Friends</button>
+        </div>
+        <div class="question" id="question-2" style="display: none;">
+            <h3>Preferred Activities in Branson?</h3>
+            <button class="answer" data-next="3" data-group="activities">Outdoor Adventures</button>
+            <button class="answer" data-next="3" data-group="activities">Entertainment</button>
+            <button class="answer" data-next="3" data-group="activities">Culinary Delights</button>
+            <button class="answer" data-next="3" data-group="activities">Cultural Experiences</button>
+        </div>
+        <div class="question" id="question-3" style="display: none;">
+            <h3>Preferred Mode of Transportation?</h3>
+            <button class="answer" data-next="result" data-group="transportation">Renting a Car</button>
+            <button class="answer" data-next="result" data-group="transportation">Public Transportation</button>
+            <button class="answer" data-next="result" data-group="transportation">On Foot</button>
+        </div>
+        <div id="quiz-result" style="display: none;"></div>
+    </div>
+    <div id="recommendations-container" style="display:none;">
+        <h3>Recommendations for Your Trip to Branson</h3>
+        <p>Explore the best of Branson with our tailored recommendations:</p>
+        <ul>
+            <li>Visit the Branson Landing for a mix of shopping and entertainment.</li>
+            <li>Enjoy a day at Silver Dollar City, an amusement park with something for everyone.</li>
+            <li>Take a scenic cruise on Table Rock Lake to unwind and enjoy nature.</li>
+            <li>Explore the Titanic Museum, a unique experience for history enthusiasts.</li>
+            <li>Check out the live shows at the Sight & Sound Theatres for unforgettable performances.</li>
+        </ul>
+    </div>
+    <div id="budget-planner-container" style="display:none;">
+        <h3>Budget Planner</h3>
+        <input type="number" id="totalBudget" placeholder="Enter your total budget" />
+        <button id="calculateBudgetButton" onclick="calculateBudget()">Calculate Budget</button>
+        <div id="budgetSuggestions"></div>
+        
+    </div>
+</div>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/openlayers"></script>
+</body>
+</html>
+
+
+CSS: 
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+body, h1, button {
+    margin: 0;
+    padding: 0;
+}
+
+.full-screen-img {
+    background-image: url('images/branson1.jpeg');
+    background-size: cover;
+    background-position: center;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: start; 
+    padding: 0;
+    width: 100%;
+    background-color: #2F2F2F; 
+    color: white;
+    margin-bottom: 0;
+    overflow:hidden;
+}
+
+
+
+.ghost-button {
+    border: 2px solid white;
+    background: transparent;
+    color: white;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+.ghost-button:hover {
+    background-color: white;
+    color: #007bff;
+}
+
+.home-btn {
+    border: 2px solid white;
+    background: transparent;
+    color: white;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 25px;
+    cursor: pointer;
+    position: fixed;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+
+.tab-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    flex-grow: 1;
+    background-color: #2F2F2F; 
+    position: relative;
+    z-index: 10;
+}
+
+
+.tab-button {
+    margin: 0 10px; 
+    padding: 10px 20px;
+    background: transparent;
+    border: 1px solid white; 
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+.tab-button:hover {
+    color: #000;
+    border-color: transparent;
+}
+
+.tabcontent {
+    display: none; 
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative; 
+    padding: 20px, 0;
+}
+
+.get-started-btn {
+    position: absolute;
+    top: 72%; 
+    left: 50%;
+    background-color: #007bff; 
+    color: #ffffff; 
+    font-size: 1.5em; 
+    padding: 15px 30px; 
+    letter-spacing: 1px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    border-radius: 30px; 
+    transition: box-shadow 0.3s, transform 0.3s;
+    z-index: 3;
+    transform: translate(-50%, -50%);
+    overflow: hidden; 
+    position: relative;
+
+    
+}
+
+.get-started-btn::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    transition: transform 0.6s, opacity 0.3s;
+    opacity: 0;
+    z-index: 0;
+}
+
+.get-started-btn:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.get-started-btn:active {
+    transform: translate(-50%, -50%);
+}
+
+
+
+.get-started-btn:hover::after {
+    transform: translate(-50%, -50%) scale(3);
+    opacity: 1;
+    transition: transform 0.6s, opacity 0s;
+}
+
+#intro {
+    z-index: -2;
+}
+
+#welcomeScreen {
+    z-index: -1;
+    transition: opacity 0.6s ease;
+}
+.tabcontent.active {
+    display: block;
+}
+.welcome-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; 
+}
+.logo {
+    height: 60px; 
+    width: auto; 
+    margin-right: 15px; 
+}
+.header h1 {
+    margin: 0; 
+    font-size: 1.5rem; 
+    overflow: hidden;
+}
+
+.tab-button:focus {
+    outline: none;
+}
+
+
+
+
+
+
+
+#Explore {
+    background-color: #4e6d8f;
+    color: white;
+    padding: 20px;
+}
+
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.card {
+     
+    height: 500px;
+    margin: 10px 0;
+    perspective: 1500px;
+    border: 5px solid #5c5c5c;
+    box-shadow: 0 4px 8px rgba(131, 11, 11, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    background: #555353;
+    flex: 0 1 calc(50% - 20px);
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 20px;
+}
+
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    position: relative;
+    text-align: center;
+}
+
+.card.is-flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+.card-front {
+    background: #fff;
+}
+
+.card-back {
+    background: #bcac51;
+    color: rgb(37, 26, 6);
+    transform: rotateY(180deg);
+    padding: 15px;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.2rem;
+    
+}
+
+.card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.map-container {
+    height: 50%;
+    width: 95%;
+    border: 2px solid #371616;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 200px auto 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.map {
+    height: 100%; 
+    width: 100%; 
+}
+
+.card.is-flipped .map-container {
+    transform: scale(1.05);
+}
+
+
+@media (max-width: 600px) {
+    .card {
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+}
+
+
+
+
+
+.tabcontent.active {
+    display: block; 
+    position: relative; 
+    z-index: 2; 
+}
+.tab-button {
+    margin: 0 10px; 
+    padding: 10px 20px;
+    background: transparent;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 2px solid white; 
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: color 0.5s ease, border-color 0.5s ease;
+    outline: none;
+}
+
+.tab-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 180%;
+    background: linear-gradient(45deg, #E7D2BE, #6D4726, #E7D2BE);
+    transition: all 0.5s ease;
+    display: block;
+    transform: translate(-50%, -50%) rotate(45deg);
+    z-index: -1;
+    opacity: 0;
+}
+
+.tab-button:hover::before {
+    opacity: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(0);
+}
+
+.tab-button:active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.tab-button:hover,
+.tab-button:focus {
+    background-color: #042446;
+    outline: none; 
+}
+
+body, h1 {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+  }
+  
+
+.section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2rem;
+    transition: background-color 0.5s;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .full-width-element {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden; 
+  }
+  
+  body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  
+  .container {
+    width: 100%; 
+  }
+
+
+
+  .parallax {
+    min-height: 100vh;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    width: 100vw;
+  }
+  
+
+
+
+#section1 { background-image: url('images/parallax0.jpg'); }
+#section2 { background-image: url('images/parallax1.jpg'); }
+#section3 { background-image: url('images/parallax2.jpg'); }
+#section4 { background-image: url('images/parallax3.jpg'); }
+
+
+.parallax-content {
+    position: relative;
+    top: 35px;
+    transform: translateY(-50%);
+    font-size: 3em; 
+    color: #6d4726; 
+    width: 100%; 
+    text-align: center; 
+    z-index: 2;
+    font-family: "Rakkas", serif;
+    font-weight: 400;
+    font-style: bold;
+    margin: 0;
+}
+#section1 .parallax-content {
+    background: rgba(229, 206, 185, 0.92); 
+    margin: 0 auto;
+    padding: 0;
+}
+#section2 .parallax-content {
+    background: rgba(229, 206, 185, 0.92); 
+    margin: 0 auto;
+    padding: 0;
+}
+#section3 .parallax-content {
+    background: rgba(229, 206, 185, 0.92); 
+    margin: 0 auto;
+    padding: 0;
+}
+#section4 .parallax-content {
+    background: rgba(229, 206, 185, 0.92); 
+    margin: 0 auto;
+    padding: 0;
+}
+
+
+
+
+body.itinerary-active #Itinerary {
+    background: linear-gradient(to right, #ffffff, #f2f4f7);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 20px;
+    width: 100%;
+}
+
+
+.itinerary-day, .activities-container{
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    padding: 20px;
+}
+
+
+.container {
+    height: 100vh;
+}
+
+
+.activity, .itinerary-slot {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #c7b657;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.itinerary-slot {
+    min-height: 150px;
+    width: 100%;
+    border: 2px solid #0143d2;
+    background-color: #FAF4E1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+
+
+.activity {
+    background-color: #c7b657;
+    color: black;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: grab;
+    text-align: center;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-size: 1.3rem;
+}
+
+.activity:hover {
+    background-color: #45a049;
+}
+
+.activity-dropped { 
+    animation: bounce 0.5s; 
+}
+
+
+
+
+
+.bar-outer {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.bar {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.option {
+    cursor: pointer;
+    text-align: center;
+    flex: 1;
+}
+
+.bar-purple {
+    display: flex;
+    width: 100%;
+    position: absolute;
+    transition: transform 0.3s ease;
+}
+
+.itinerary-days-nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.day-btn {
+    padding: 15px 25px;
+    font-size: 16px; 
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: #007bff; 
+    border: none;
+    border-radius: 5px; 
+    box-shadow: 0 9px #999;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; 
+}
+
+.day-btn:hover {
+    background-color: #0056b3; 
+}
+
+.day-btn:active {
+    background-color: #0056b3; 
+    box-shadow: 0 5px #666; 
+    transform: translateY(4px); 
+}
+
+.itinerary-day.active {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.itinerary-slot h3 {
+    color: #007bff;
+    margin-bottom: 10px; 
+    text-align: center; 
+}
+
+#Itinerary h2 {
+    text-align: center; 
+    margin-top: 20px; 
+    font-size: 2em; 
+}
+
+@media (max-width: 768px) {
+    .itinerary-day.active {
+        flex-direction: column;
+    }
+
+    .activities-container, .itinerary-slot {
+        width: 100%;
+    }
+}
+
+@keyframes bounce {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2); 
+    }
+    100% {
+      transform: scale(1); 
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+#downloadItinerary {
+    padding: 10px 20px; 
+    font-size: 14px; 
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: #007bff; 
+    border: none;
+    border-radius: 5px; 
+    box-shadow: 0 5px #999;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; 
+}
+
+.itinerary-download-button {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100%; 
+}
+
+
+#downloadItinerary:hover {
+    background-color: #0056b3;
+}
+
+#downloadItinerary:active {
+    background-color: #004185;
+    box-shadow: 0 2px #666;
+    transform: translateY(2px);
+}
+
+
+
+
+
+
+
+
+
+
+body.recommendations-active #Recommendations {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(to right bottom, #485563, #29323c);
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 20px;
+    text-align: center;
+}
+
+body.recommendations-active #Recommendations {
+    display: none;
+}
+
+#openQuizButton, #openRecommendationsButton, #openBudgetPlannerButton {
+    font-size: 1.2rem;
+    color: white;
+    background-color: #343a40;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 30px;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s, transform 0.2s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#openQuizButton:hover, #openRecommendationsButton:hover, #openBudgetPlannerButton:hover {
+    background-color: #495057;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px);
+}
+
+
+#openQuizButton:focus, #openRecommendationsButton:focus, #openBudgetPlannerButton:focus {
+    outline: none;
+    border: 2px solid #007bff;
+}
+
+#quiz-container, #recommendations-container, #budget-planner-container {
+    display: none;
+}
+
+#quiz-container, #recommendations-container, #budget-planner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+
+
+.question {
+    font-size: 2.5rem;
+    margin: 2rem 0;
+    color: #FFFFFF;
+}
+
+
+.answer {
+    font-size: 1.5rem;
+    background-color: #343a40;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 25px;
+    padding: 15px 30px;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: auto;
+}
+
+
+.answer:hover {
+    background-color: #495057;
+    transform: translateY(-3px);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+
+.options-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#quiz-result {
+    font-size: 2rem; 
+    color: white;
+    margin-top: 20px; 
+    text-align: center;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.32);
+    border-radius: 8px; 
+    width: auto; 
+    max-width: 80%; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    margin: 20px auto; 
+}
+
+#quiz-result p {
+    margin-bottom: 10px; 
+}#budget-planner-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%; 
+    max-width: 600px; 
+    margin: 0 auto; 
+    padding: 20px;
+    color: white;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7); 
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out; 
+    opacity: 1; 
+}
+
+input[type="number"]#totalBudget {
+    padding: 12px;
+    width: 100%; 
+    max-width: 400px; 
+    border: 2px solid #495057;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    background: #343a40;
+    color: white;
+    font-size: 1.2rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); 
+}
+
+input[type="number"]#totalBudget:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.8); 
+}
+
+button#calculateBudgetButton {
+    font-size: 1.5rem;
+    color: white;
+    background-image: linear-gradient(to right, #231830, #8695b0);
+    border: none;
+    border-radius: 25px;
+    padding: 15px 40px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+    outline: none;
+}
+
+button#calculateBudgetButton:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+    background-image: linear-gradient(to right, #3c4046, #9a959f);
+}
+
+button#calculateBudgetButton:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+
+#budgetSuggestions, #culturalTips {
+    background: rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    max-width: 400px;
+    text-align: left;
+    font-size: 1.2rem;
+}
+
+
+
+#budget-planner-container.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+@media (max-width: 768px) {
+    .question {
+        font-size: 2rem;
+    }
+    .answer {
+        font-size: 1.2rem;
+        padding: 12px 24px;
+    }
+}
+
+
+
+AND JAVASCRIPT:
+
+
+document.getElementById('getStartedButton').addEventListener('click', function() {
+    var welcomeScreen = document.getElementById('welcomeScreen');
+    welcomeScreen.style.opacity = '0'; 
+
+    setTimeout(function() {
+        welcomeScreen.style.display = 'none'; 
+        document.querySelector('.tab-nav').style.display = 'flex'; 
+        openTab('Home'); 
+    }, 600); 
+});
+
+
+
+
+document.querySelectorAll('.map-container').forEach(container => {
+    container.addEventListener('click', function(event) {
+        event.stopPropagation(); 
+    });
+});
+function toggleCard(cardElement, mapElementId, coords) {
+    cardElement.classList.toggle('is-flipped');
+    
+    if (cardElement.classList.contains('is-flipped') && !cardElement.classList.contains('map-initialized')) {
+        initMap(mapElementId, coords);
+        cardElement.classList.add('map-initialized');
+    }
+}
+
+
+function initMap(mapElementId, coords) {
+    new ol.Map({
+        target: mapElementId,
+        layers: [
+            new ol.layer.Tile({
+                source: new ol.source.OSM()
+            })
+        ],
+        view: new ol.View({
+            center: ol.proj.fromLonLat(coords),
+            zoom: 17
+        })
+    });
+}
+
+function openTab(tabId) {
+    var tabs = document.getElementsByClassName('tabcontent');
+    for (var i = 0; i < tabs.length; i++) {
+        tabs[i].style.display = 'none';
+    }
+
+    var activeTab = document.getElementById(tabId);
+    activeTab.style.display = 'block';
+    if (tabId === 'Recommendations') {
+        document.body.classList.add('recommendations-active');
+    } else {
+        document.body.classList.remove('recommendations-active');
+    }
+}
+
+
+
+
+    
+
+    
+document.querySelector('.tab-nav').style.display = 'none'; 
+function filterAttractions(category) {
+    var contents = document.querySelectorAll('.attractions-content');
+
+    contents.forEach(function(content) {
+        content.style.display = 'none';
+        content.classList.remove('active');
+    });
+
+    
+    var selectedContent = document.getElementById(category);
+    if (selectedContent) {
+        selectedContent.style.display = 'block';
+        selectedContent.classList.add('active');
+    }
+}
+
+
+
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    var droppedElement = document.getElementById(data);
+    var dropTarget = ev.target.closest('.itinerary-slot'); 
+    if (dropTarget) {
+        dropTarget.appendChild(droppedElement);
+        droppedElement.classList.add('activity-dropped'); 
+        setTimeout(() => droppedElement.classList.remove('activity-dropped'), 500); 
+      }
+    }
+
+function openDay(dayId) {
+    var days = document.getElementsByClassName('itinerary-day');
+    for (var i = 0; i < days.length; i++) {
+        days[i].style.display = 'none';
+    }
+    document.getElementById(dayId).style.display = 'block';
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    openDay('Monday');
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    
+    
+    
+    document.getElementById('downloadItinerary').addEventListener('click', downloadItinerary);
+});
+
+function downloadItinerary() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    
+    const logoUrl = 'images/logo.png'; 
+    let imgData;
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', logoUrl, true);
+    xhr.responseType = 'blob';
+    xhr.onload = function() {
+        const reader = new FileReader();
+        reader.readAsDataURL(xhr.response);
+        reader.onloadend = function() {
+            imgData = reader.result;
+            generatePDF(doc, imgData);
+        };
+    };
+    xhr.send();
+}
+
+function generatePDF(doc, logoData) {
+    const pageHeight = doc.internal.pageSize.getHeight();
+    const pageWidth = doc.internal.pageSize.getWidth();
+
+    doc.addImage(logoData, 'PNG', 0, 0, pageWidth, 50); 
+
+    let yPos = 70; 
+
+    doc.setFont('times'); 
+
+    document.querySelectorAll('.itinerary-day').forEach(function(day) {
+        let activities = day.querySelectorAll('.itinerary-slot .activity');
+        if (activities.length > 0) {
+            let dayName = day.querySelector('h3').textContent;
+            doc.setFontSize(16); 
+            doc.setFont(undefined, 'bold'); 
+            let titleWidth = doc.getTextWidth(dayName);
+            doc.text(dayName, (pageWidth - titleWidth) / 2, yPos); 
+            yPos += 10; 
+
+            doc.setFontSize(12); 
+            doc.setFont(undefined, 'normal'); 
+
+            activities.forEach(function(activity) {
+                if (yPos >= pageHeight - 10) { 
+                    doc.addPage();
+                    yPos = 20; 
+                }
+                let activityText = '- ' + activity.textContent.trim();
+                let activityWidth = doc.getTextWidth(activityText);
+                doc.text(activityText, (pageWidth - activityWidth) / 2, yPos); 
+                yPos += 10; 
+            });
+
+            yPos += 10; 
+        }
+    });
+
+    doc.save('itinerary.pdf'); 
+}
+
+
+
+document.getElementById('openQuizButton').addEventListener('click', () => {
+    console.log("Quiz button clicked");
+    document.getElementById('quiz-container').style.display = 'block';
+    document.getElementById('recommendations-container').style.display = 'none';
+    document.getElementById('budget-planner-container').style.display = 'none';
+});
+
+document.getElementById('openRecommendationsButton').addEventListener('click', () => {
+    console.log("Recommendations button clicked");
+    document.getElementById('recommendations-container').style.display = 'block';
+    document.getElementById('quiz-container').style.display = 'none';
+    document.getElementById('budget-planner-container').style.display = 'none';
+});
+
+document.getElementById('openBudgetPlannerButton').addEventListener('click', () => {
+    console.log("Budget planner button clicked");
+    document.getElementById('budget-planner-container').style.display = 'block';
+    document.getElementById('quiz-container').style.display = 'none';
+    document.getElementById('recommendations-container').style.display = 'none';
+});
+
+
+const userChoices = {
+    activities: '',
+    transportation: ''
+};
+
+document.querySelectorAll('.answer').forEach(button => {
+    button.addEventListener('click', function() {
+        const nextQuestionId = this.getAttribute('data-next');
+        const group = this.getAttribute('data-group');
+        const choice = this.textContent; 
+
+        
+        userChoices[group] = choice;
+
+        
+        if (nextQuestionId === 'result') {
+            
+            displayResult();
+        } else {
+            
+            document.getElementById(`question-${nextQuestionId}`).style.display = 'block';
+        }
+
+        
+        this.closest('.question').style.display = 'none';
+    });
+});
+
+function displayResult() {
+    
+    const resultText = getResultText(userChoices.activities, userChoices.transportation);
+    document.getElementById('quiz-result').innerHTML = resultText;
+    document.getElementById('quiz-result').style.display = 'block';
+}
+
+function getResultText(activitiesChoice, transportationChoice) {
+    let resultText = '';
+
+    if (activitiesChoice === 'Outdoor Adventures') {
+        if (transportationChoice === 'Renting a Car') {
+            resultText = 'Experience the thrill of outdoor exploration with the freedom of a rental car! Begin your adventure at Dogwood Canyon Nature Park, where stunning waterfalls, picturesque bluffs, and wildlife await you along its miles of hiking and biking trails. Next, head to Wolfe Mountain for a heart-pounding ziplining adventure through the treetops, offering exhilarating views of the Ozarks. Finally, venture to Table Rock Lake for a serene kayaking excursion, paddling amidst the tranquil waters surrounded by breathtaking natural beauty. With a rental car, you have the flexibility to discover these outdoor gems at your own pace, ensuring an unforgettable journey into Branson\'s wilderness.';
+        } else if (transportationChoice === 'Public Transportation') {
+            resultText = 'Embark on an outdoor adventure with the convenience of Branson\'s public transit system! Start your day exploring the rugged beauty of Dogwood Canyon, where cascading waterfalls, limestone bluffs, and pristine streams await. Then, soar through the treetops at Wolfe Mountain on a thrilling ziplining tour, taking in panoramic views of the Ozark Mountains. Finally, unwind with a leisurely kayak trip on Table Rock Lake, surrounded by serene landscapes and abundant wildlife. With easy access to these outdoor attractions via public transportation, you can immerse yourself in nature\'s wonders without the hassle of driving.';
+        } else { 
+            resultText = 'Indulge your adventurous spirit on foot as you explore Branson\'s outdoor playgrounds! Begin your day with a hike through the scenic trails of Dogwood Canyon, where towering bluffs, pristine waterways, and hidden waterfalls await your discovery. Then, satisfy your craving for adrenaline at Wolfe Mountain, where a series of ziplines offer breathtaking views and heart-pounding thrills. Finally, enjoy a leisurely paddleboarding session on the crystal-clear waters of Table Rock Lake, surrounded by the beauty of the Ozarks. With each step, you\'ll experience the natural wonders of Branson up close and personal, making memories that will last a lifetime.';
+        }
+    } else if (activitiesChoice === 'Entertainment') {
+        if (transportationChoice === 'Renting a Car') {
+            resultText = 'Immerse yourself in Branson\'s vibrant entertainment scene with the flexibility of a rental car! Cruise from one spectacular show to the next, starting with the captivating productions at Sight & Sound Theatres, where biblical stories come to life on stage. Then, set sail on the Showboat Branson Belle for an unforgettable dinner cruise featuring live music, comedy, and breathtaking views of Table Rock Lake. With your car as your guide, you can explore the best of Branson\'s entertainment offerings at your leisure, ensuring an unforgettable experience filled with laughter, music, and magic.';
+        } else if (transportationChoice === 'Public Transportation') {
+            resultText = 'Discover the excitement of Branson\'s entertainment district with the convenience of public transportation! Hop aboard Branson\'s transit system and embark on a journey through the city\'s dazzling array of shows and attractions. Start your day with a visit to the iconic Sight & Sound Theatres, where epic tales from the Bible are brought to life through awe-inspiring productions. Then, hop on a trolley and make your way to the Branson Landing, where live music, shopping, and dining await along the scenic waterfront. With easy access to Branson\'s top entertainment destinations, you can enjoy a hassle-free day of fun and excitement.';
+        } else { 
+            resultText = 'Experience the vibrant energy of Branson\'s entertainment scene on foot as you explore the city\'s lively theaters, attractions, and dining venues! Start your day with a stroll along the famous Branson Strip, where neon lights and bustling crowds set the stage for a day of excitement. Stop by Sight & Sound Theatres for a captivating theatrical performance, then wander down to the Branson Landing for a leisurely lunch by the water. As the sun sets, head to the Historic Downtown District, where live music and street performers add to the city\'s lively atmosphere. With each step, you\'ll discover new sights, sounds, and experiences, making memories that will last a lifetime.';
+        }
+    } else if (activitiesChoice === 'Culinary Delights') {
+        if (transportationChoice === 'Renting a Car') {
+            resultText = 'Embark on a culinary adventure through Branson\'s diverse dining scene with the freedom of a rental car! Begin your gastronomic journey at Branson Landing, where waterfront restaurants offer scenic views and delicious fare ranging from fresh seafood to authentic barbecue. Then, head to the heart of the Ozarks and indulge in farm-to-table cuisine at The Keeter Center, where every dish is prepared with locally sourced ingredients and served with Southern hospitality. With your car as your guide, you can savor the flavors of Branson at your own pace, discovering hidden gems and local favorites along the way.';
+        } else if (transportationChoice === 'Public Transportation') {
+            resultText = 'Savor the flavors of Branson stress-free with the convenience of public transportation! Start your culinary journey at Branson Landing, where a variety of waterfront restaurants offer everything from gourmet burgers to farm-fresh salads. Then, hop on a trolley and make your way to Historic Downtown Branson, where cozy cafes and family-owned eateries serve up hearty comfort food and mouthwatering desserts. With easy access to Branson\'s top dining destinations, you can indulge in a culinary adventure without the hassle of driving.';
+        } else { 
+            resultText = 'Discover Branson\'s culinary treasures on a leisurely walk through the city\'s charming neighborhoods and bustling districts! Start your day with a stroll along the scenic boardwalk at Branson Landing, where waterfront restaurants offer picturesque views and delicious cuisine. Then, wander through Historic Downtown Branson, stopping at quaint cafes and local eateries to sample homemade treats and regional specialties. As the sun sets, head to the Branson Strip, where neon lights and lively crowds create the perfect backdrop for a night of dining and entertainment. With each step, you\'ll discover new flavors and experiences, making your culinary journey through Branson a truly unforgettable one.';
+        }
+    } else if (activitiesChoice === 'Cultural Experiences') {
+        if (transportationChoice === 'Renting a Car') {
+            resultText = 'Immerse yourself in Branson\'s rich cultural heritage with the freedom of a rental car! Start your journey at the Titanic Museum, where interactive exhibits and artifacts offer a fascinating glimpse into the world\'s most famous ocean liner. Then, venture to the Branson Scenic Railway and embark on a scenic journey through the Ozark Mountains, where breathtaking views and historic landmarks await around every curve. With your car as your guide, you can explore Branson\'s cultural landmarks at your own pace, uncovering stories and traditions that have shaped the city for generations.';
+        } else if (transportationChoice === 'Public Transportation') {
+            resultText = 'Discover Branson\'s cultural landmarks with ease on public transportation! Start your day at the Titanic Museum, where you\'ll embark on a journey through history with interactive exhibits and artifacts from the legendary ocean liner. Then, hop on a trolley and make your way to the Branson Scenic Railway, where a scenic journey through the Ozarks awaits, offering breathtaking views and historic landmarks along the way. With convenient access to Branson\'s top cultural attractions, you can immerse yourself in the city\'s rich heritage without the hassle of driving.';
+        } else { 
+            resultText = 'Stroll through the cultural heart of Branson, from historic sites to scenic views, and connect with the city’s heritage one step at a time. Wander through museums, monuments, and galleries, absorbing the rich tapestry of Branson’s cultural landscape on foot. Explore the immersive exhibits at the Titanic Museum, where you\'ll learn about the tragic story of the ill-fated ship, then take a leisurely walk to the Branson Scenic Railway for a scenic journey through the Ozark Mountains. With each step, you\'ll uncover new stories and traditions that have shaped Branson into the vibrant city it is today.';
+        }
+    }
+    
+    return resultText;
+
+}
+
+function calculateBudget() {
+    const totalBudget = parseFloat(document.getElementById('totalBudget').value);
+    if (isNaN(totalBudget) || totalBudget <= 0) {
+        alert('Please enter a valid budget amount.');
+        return;
+    }
+
+    
+    const foodPercent = 0.25; 
+    const lodgingPercent = 0.30
+    const transportationPercent = 0.21; 
+    const activitiesandtoursPercent = 0.13; 
+    const shoppingandsouvenirsPercent = 0.06; 
+    const miscellaneousPercent = 0.05;
+
+    const budgetBreakdown = {
+        food: totalBudget * foodPercent,
+        lodging: totalBudget * lodgingPercent,
+        transportation: totalBudget * transportationPercent,
+        activitiesandtours: totalBudget * activitiesandtoursPercent,
+        shoppingandsouvenirs: totalBudget * shoppingandsouvenirsPercent,
+        miscellaneous: totalBudget * miscellaneousPercent
+    };
+
+    displayBudgetSuggestions(budgetBreakdown);
+}
+
+function displayBudgetSuggestions(budgetBreakdown) {
+    const budgetSuggestionsElement = document.getElementById('budgetSuggestions');
+    budgetSuggestionsElement.innerHTML = `
+        <h4>Budget Breakdown:</h4>
+        <p>Food: $${budgetBreakdown.food.toFixed(2)}</p>
+        <p>Lodging: $${budgetBreakdown.lodging.toFixed(2)}</p>
+        <p>Transportation: $${budgetBreakdown.transportation.toFixed(2)}</p>
+        <p>Activies & Tours: $${budgetBreakdown.activitiesandtours.toFixed(2)}</p>
+        <p>Shopping & Souvenirs: $${budgetBreakdown.shoppingandsouvenirs.toFixed(2)}</p>
+        <p>Miscellenous: $${budgetBreakdown.miscellaneous.toFixed(2)}</p>
+    `;
+}
